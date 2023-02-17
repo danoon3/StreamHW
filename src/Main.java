@@ -32,10 +32,10 @@ public class Main {
 
         List<String> workerSurnames = persons.stream()
                 .filter(person -> person.getEducation() == Education.HIGHER)
-                .filter(person -> person.getAge() >= 18 && person.getAge() <= 65)
+                .filter(person -> (person.getSex()==Sex.MAN && person.getAge() >= 18 && person.getAge() < 65) ||
+                        (person.getSex() == Sex.WOMAN && person.getAge() >= 18 && person.getAge() <60))
                 .sorted(Comparator.comparing(Person::getSurname))
                 .map(Person::getSurname)
                 .collect(Collectors.toList());
-
     }
 }
